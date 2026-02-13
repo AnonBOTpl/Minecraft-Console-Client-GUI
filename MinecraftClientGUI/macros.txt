@@ -1,0 +1,6 @@
+|||| <--- Don't touch this line (spacer)
+Creative|/gamemode creative|Gold
+Survival|/gamemode survival|Gray
+Hello|Hello everyone!|Green
+Login|/login password123|Purple
+Spawn|/spawn|Blue
