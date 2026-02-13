@@ -1,83 +1,95 @@
-<div align="center">
-
-<img src="https://i.pics.rs/LLDhE.png" alt="Logo"/>
-
-# Minecraft Console Client (MCC)
-
-[Documentation](https://mccteam.github.io/) | [Download](#download) | [Installation](https://mccteam.github.io/guide/installation.html) | [Configuration](https://mccteam.github.io/guide/configuration.html) | [Usage](https://mccteam.github.io/guide/usage.html)
-
-</div>
+# MCC Multibox Commander (GUI Fork)
 
 <div align="center">
 
-[English](https://github.com/MCCTeam/Minecraft-Console-Client/blob/master/README.md) | [Nederlands](https://github.com/MCCTeam/MCCTeam.github.io/blob/master/MCC-README/README-Dutch.md) | [Русский](https://github.com/MCCTeam/MCCTeam.github.io/blob/master/MCC-README/README-Russian.md) | [Српски](https://github.com/MCCTeam/MCCTeam.github.io/blob/master/MCC-README/README-Serbian_Cyrillic.md) | [Türkçe](https://github.com/MCCTeam/MCCTeam.github.io/blob/master/MCC-README/README-Turkish.md) | [Tiếng Việt](https://github.com/MCCTeam/MCCTeam.github.io/blob/master/MCC-README/README-Vietnamese.md) | [简体中文](https://github.com/MCCTeam/MCCTeam.github.io/blob/master/MCC-README/README-Chinese_Simplified.md) | [繁體中文](https://github.com/MCCTeam/MCCTeam.github.io/blob/master/MCC-README/README-Chinese_Traditional.md)
+<!-- You can add a screenshot here if you want -->
+<!-- <img src="screenshots/preview.png" alt="GUI Preview" width="800"/> -->
+
+**A modern, dark-themed GUI for [Minecraft Console Client](https://github.com/MCCTeam/Minecraft-Console-Client) focused on multiboxing and macro management.**
+
+[Features](#features-✨) | [Installation](#installation-📦) | [Usage](#usage-📚) | [License](#license-⚖️)
 
 </div>
 
-<div align="center">
+## About ℹ️
 
-[![GitHub Actions build status](https://github.com/MCCTeam/Minecraft-Console-Client/actions/workflows/build-and-release.yml/badge.svg)](https://github.com/MCCTeam/Minecraft-Console-Client/releases/latest) <a href="https://discord.gg/sfBv4TtpC9"><img src="https://img.shields.io/discord/1018553894831403028?color=5865F2&logo=discord&logoColor=white" alt="Discord server" /></a>
+This project is a modified fork of **Minecraft Console Client (MCC)**. While the core logic relies on the robust MCCTeam implementation, the Graphical User Interface (GUI) has been completely rewritten to support **managing multiple bots simultaneously**.
 
-</div>
+This tool is perfect for server administration, AFK farming, or chat management across multiple accounts using a convenient, dark-themed dashboard.
 
-## **About ℹ️**
+## Features ✨
 
-**Minecraft Console Client (MCC)** is a lightweight cross-platform open-source Minecraft TUI client for **Java** edition that allows you to connect to any Minecraft Java server, send commands and receive text messages in a fast and easy way without having to open the main Minecraft game.
+### 🚀 New GUI Features (Added in this Fork)
+-   **Multiboxing Support**: Run multiple Minecraft accounts in separate tabs within a single window.
+-   **Dark Mode UI**: A completely redesigned, eye-friendly dark interface replacing the old Windows Forms look.
+-   **Global Control**: Send chat messages or commands to **all connected bots** simultaneously with the "Send to all" checkbox.
+-   **Macro System**: 
+    -   Side panel with quick-action buttons.
+    -   Load custom commands from `macros.txt`.
+    -   Edit and reload macros on the fly.
+-   **Bilingual Support**: Switch between **English** and **Polish** (PL/EN) instantly.
+-   **Session History**: Remembers your last used usernames, IPs, and passwords (stored locally in `settings_v3.txt`).
+-   **Active Counter**: Displays the number of currently connected accounts.
 
-## Download
+### 🛠 Core MCC Features (Inherited)
+-   Connect to any Minecraft Java server (Offline/Online mode support depends on core MCC configuration).
+-   Lightweight and fast.
+-   Full chat and command support with color parsing.
+-   Inventory handling, auto-response, and other core MCC features run in the background.
 
-Get development builds from the [Releases section](https://github.com/MCCTeam/Minecraft-Console-Client/releases/latest)
+## Installation 📦
 
-## How to use 📚
+You can install the application using the installer or run it directly from the folder.
 
--   🌐 [Full Documentation](https://mccteam.github.io/)
--   📦 [Installation](https://mccteam.github.io/guide/installation.html)
--   📖 [Usage](https://mccteam.github.io/guide/usage.html)
--   ⚙️ [Configuration](https://mccteam.github.io/guide/configuration.html)
--   🤖 [Chat Bots](https://mccteam.github.io/guide/chat-bots.html)
--   📝 [Sample configuration files](MinecraftClient/config/)
+### Option 1: Installer (Recommended)
+1.  Download the latest **publish.zip** from the [Releases section](../../releases).
+2.  Extract the ZIP file.
+3.  Run **`setup.exe`**.
+4.  Follow the prompts to install the application on your system.
 
-## Getting Help 🙋
+### Option 2: Run from Folder / Portable
+1.  Clone this repository or download the source code.
+2.  Navigate to the `MinecraftClientGUI` folder.
+3.  Run **`MinecraftClientGUI.exe`**.
 
-Check out the [Website](https://mccteam.github.io/), [README](https://github.com/MCCTeam/Minecraft-Console-Client/tree/master/MinecraftClient/config#minecraft-console-client-user-manual) and existing [Discussions](https://github.com/MCCTeam/Minecraft-Console-Client/discussions): Maybe your question is answered there. If not, please open a [New Discussion](https://github.com/MCCTeam/Minecraft-Console-Client/discussions/new) and ask your question. If you find a bug, please report it in the [Issues](https://github.com/MCCTeam/Minecraft-Console-Client/issues) section.
+*Note: The first time you run the application, it will automatically generate necessary configuration files like `macros.txt` and `settings_v3.txt`.*
 
-## Discord
+## Usage 📚
 
-We now have a Discord server, click [here](https://discord.gg/sfBv4TtpC9) to join.
+### Connecting
+1.  Enter your **Username/Email**.
+2.  Enter **Password** (leave blank for offline servers if supported).
+3.  Enter **Server IP**.
+4.  Click **Add Account (+)**.
+5.  A new tab will open, and the bot will attempt to connect.
 
-## Helping Us ❤️
+### Using Macros
+1.  Click the **Edit** button in the "Quick Actions" panel.
+2.  Add lines in the format: `Label|/command|Color`.
+    *   *Example:* `Survival|/gamemode survival|Green`
+3.  Save the text file and click **Reload**.
+4.  Clicking a macro button sends the command to the active tab (or all tabs if "Send to all" is checked).
 
-We are a small community so we need help to implement upgrades for new Minecraft versions, fixing bugs and expanding the project. We are always looking for motivated people to contribute. If you feel like it could be you, please have a look at the [issues](https://github.com/MCCTeam/Minecraft-Console-Client/issues?q=is%3Aissue+is%3Aopen+label%3Awaiting-for%3Acontributor) section :)
+### Global Chat
+1.  Check the **Send to all** box at the bottom.
+2.  Type a message or command in the bottom input box.
+3.  Press Enter or click **Send**. The message will be executed by every connected bot.
 
-## How to contribute 📝
+## Building from source 🏗️
 
-If you'd like to contribute to Minecraft Console Client, great, just fork the repository and submit a pull request on the _Master_ branch. To contribute to the website / online documentation see also the [Website repository](https://github.com/MCCTeam/MCCTeam.github.io).
+This project requires **Visual Studio** (2019 or newer recommended) with **.NET Framework** support.
+1.  Open the solution file.
+2.  Ensure `MinecraftClient` project is set as the startup project.
+3.  Build and Run.
 
-![Alt](https://repobeats.axiom.co/api/embed/c8a6c7c47fde8fcbe3727a21eab46e6b39dff60d.svg "Repobeats analytics image")
+## Credits & License ⚖️
 
-## Translating Minecraft Console Client 🌍
+**This project is a fork of [Minecraft Console Client](https://github.com/MCCTeam/Minecraft-Console-Client).**
 
-To improve translations for MCC, please visit: [Crowdin - Minecraft Console Client](https://crwd.in/minecraft-console-client).
+-   **GUI & Multibox modifications:** Created by [AnonBOTpl](https://github.com/AnonBOTpl).
+-   **Core Logic & Original Project:** Copyright (c) 2012-2024 MCC Team & Contributors.
 
-## Building from the source 🏗️
+Licensed under **CDDL-1.0**.
+You may use, modify, and distribute this software under the terms of the CDDL-1.0 license. Source code modifications must be made available if distributed.
 
-This section has been moved to our new [Documentation website](https://mccteam.github.io/guide/installation.html#building-from-the-source-code).
-
-## License ⚖️
-
-Unless specifically stated, the code is from the MCC Team or Contributors, and available under CDDL-1.0. Else, the license and original author are mentioned in source file headers.
-The main terms of the CDDL-1.0 license are basically the following:
-
--   You may use the licensed code in whole or in part in any program you desire, regardless of the license of the program as a whole (or rather, as excluding the code you are borrowing). The program itself may be open or closed source, free or commercial.
--   However, in all cases, any modifications, improvements, or additions to the CDDL code (any code that is referenced in direct modifications to the CDDL code is considered an addition to the CDDL code, and so is bound by this requirement; e.g. a modification of a math function to use a fast lookup table makes that table itself an addition to the CDDL code, regardless of whether it's in a source code file of its own) must be made publicly and freely available in source, under the CDDL license itself.
--   In any program (source or binary) that uses CDDL code, recognition must be given to the source (either project or author) of the CDDL code. As well, modifications to the CDDL code (which must be distributed as source) may not remove notices indicating the ancestry of the code.
-
-More info at http://qstuff.blogspot.fr/2007/04/why-cddl.html
-Full license at http://opensource.org/licenses/CDDL-1.0
-
-## Uses technologies from
-<div align="center">
-<a href="https://sentry.io/welcome/">
-  <img src="https://github.com/breadbyte/Minecraft-Console-Client/assets/14045257/411e9a2f-cd9b-4bb5-b7e9-cd7529c76b88" alt="Sentry"  />
-</a>
-</div>
+Full license text available at: http://opensource.org/licenses/CDDL-1.0
