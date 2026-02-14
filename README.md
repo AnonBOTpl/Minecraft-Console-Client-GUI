@@ -17,6 +17,8 @@ This project is a modified fork of **Minecraft Console Client (MCC)**. While the
 
 This tool is perfect for server administration, AFK farming, or chat management across multiple accounts using a convenient, dark-themed dashboard.
 
+![Screenshot](screenshot.png)
+
 ## Features ✨
 
 ### 🚀 New GUI Features (Added in this Fork)
