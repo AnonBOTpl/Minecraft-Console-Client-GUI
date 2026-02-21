@@ -114,6 +114,20 @@ File format: `logs/<nick>_<yyyy-MM-dd_HH-mm>.txt`
 
 ---
 
+## Updating MCC Core
+
+This GUI ships with a specific version of `MinecraftClient.exe` (MCC build 285, for Minecraft 1.20.4).
+
+If you want to use a newer version of Minecraft, you can update the core manually:
+
+1. Download the latest `MinecraftClient.exe` from the [official MCC releases](https://github.com/MCCTeam/Minecraft-Console-Client/releases/latest)
+2. Replace `MinecraftClient.exe` in the folder where `MinecraftClientGUI.exe` is located
+3. The GUI itself does not need to be rebuilt — it will automatically use the new core
+
+> **Note:** Newer versions of MCC may change their output format or arguments, which could cause display issues in the GUI. If something breaks after updating, check the [MCC changelog](https://github.com/MCCTeam/Minecraft-Console-Client/releases) for breaking changes.
+
+---
+
 ## Changelog
 
 ### v2.0.0 — 2026-02-21
