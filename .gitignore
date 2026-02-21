@@ -1,0 +1,36 @@
+# Build outputs
+**/bin/
+**/obj/
+publish/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# JetBrains Rider
+.idea/
+
+# Klucze tymczasowe
+*.pfx
+
+# Logi aplikacji (generowane automatycznie)
+logs/
+
+# Pliki konfiguracyjne użytkownika (generowane przy pierwszym uruchomieniu)
+settings_v3.txt
+macros.txt
+language.txt
+MinecraftClient.ini
+
+# Cache MCC - wrazliwe dane (tokeny sesji, klucze profilu) - NIGDY nie wrzucac!
+SessionCache.ini
+ProfileKeyCache.ini
+*.cache
+
+# System
+Thumbs.db
+Desktop.ini
+.DS_Store
