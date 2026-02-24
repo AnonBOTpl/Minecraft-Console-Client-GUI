@@ -82,7 +82,7 @@ namespace MinecraftClientGUI
         private FlatBtn btnAddBot;
         private TextBox boxGlobalInput;
         private FlatBtn btnGlobalSend;
-        private CheckBox chkSendToAll;
+        private CheckBox chkSendToAll, chkAntiBot;
         private Label lblMacrosTitle;
         private FlowLayoutPanel macroPanel;
         private FlatBtn btnEditMacros, btnRefreshMacros, btnLangSwitch;
@@ -91,6 +91,7 @@ namespace MinecraftClientGUI
         private List<string> historyIPs = new List<string>();
         private List<ConsoleTab> tabs = new List<ConsoleTab>();
         private ConsoleTab activeTab = null;
+        private static Random rnd = new Random();
 
         public Form1(string[] args)
         {
@@ -190,6 +191,9 @@ namespace MinecraftClientGUI
 
             chkSendToAll = new CheckBox { Text = "Send to all", Dock = DockStyle.Right, Width = 120, ForeColor = Color.FromArgb(255, 160, 90), Padding = new Padding(8, 0, 0, 0), Font = new Font("Segoe UI", 9f, FontStyle.Bold) };
             bottomPanel.Controls.Add(chkSendToAll);
+
+            chkAntiBot = new CheckBox { Text = "Anti-Bot", Dock = DockStyle.Right, Width = 100, ForeColor = Color.FromArgb(100, 220, 150), Padding = new Padding(8, 0, 0, 0), Font = new Font("Segoe UI", 9f, FontStyle.Bold) };
+            bottomPanel.Controls.Add(chkAntiBot);
 
             boxGlobalInput = new TextBox { Dock = DockStyle.Fill, BackColor = Theme.BgInput, ForeColor = Theme.Text, BorderStyle = BorderStyle.FixedSingle, Font = new Font("Consolas", 11f) };
             boxGlobalInput.KeyDown += (s, e) => { if (e.KeyCode == Keys.Enter) { BtnGlobalSend_Click(s, e); e.SuppressKeyPress = true; } };
@@ -294,6 +298,7 @@ namespace MinecraftClientGUI
             btnRefreshMacros.Text = en ? "Reload" : "Odswiez";
             btnGlobalSend.Text = en ? "Send" : "Wyslij";
             chkSendToAll.Text = en ? "Send to all" : "Wyslij do wszystkich";
+            chkAntiBot.Text = en ? "Anti-Bot" : "Anty-Bot";
             foreach (var tab in tabs) tab.UpdateLang(currentLang);
         }
 
@@ -347,10 +352,7 @@ namespace MinecraftClientGUI
             btn.MouseEnter += (s, e) => btn.BackColor = hov;
             btn.MouseLeave += (s, e) => btn.BackColor = bg;
             btn.Paint += (s, e) => e.Graphics.FillRectangle(new SolidBrush(color), 0, 0, 4, btn.Height);
-            btn.Click += (s, e) => {
-                if (chkSendToAll.Checked) foreach (var tab in tabs) tab.Send(cmd);
-                else activeTab?.Send(cmd);
-            };
+            btn.Click += (s, e) => ExecuteCommand(cmd);
             macroPanel.Controls.Add(btn);
         }
 
@@ -371,9 +373,29 @@ namespace MinecraftClientGUI
         {
             string cmd = boxGlobalInput.Text.Trim();
             if (string.IsNullOrEmpty(cmd)) return;
-            if (chkSendToAll.Checked) foreach (var tab in tabs) tab.Send(cmd);
-            else activeTab?.Send(cmd);
+            ExecuteCommand(cmd);
             boxGlobalInput.Clear();
+        }
+
+        private void ExecuteCommand(string cmd)
+        {
+            if (chkSendToAll.Checked)
+            {
+                foreach (var tab in tabs)
+                {
+                    string finalCmd = cmd;
+                    if (chkAntiBot.Checked && !cmd.StartsWith("/"))
+                        finalCmd = cmd + " " + GenerateRandomString(5) + " |";
+                    tab.Send(finalCmd);
+                }
+            }
+            else if (activeTab != null)
+            {
+                string finalCmd = cmd;
+                if (chkAntiBot.Checked && !cmd.StartsWith("/"))
+                    finalCmd = cmd + " " + GenerateRandomString(5) + " |";
+                activeTab.Send(finalCmd);
+            }
         }
 
         private void LoadSettings()
@@ -402,6 +424,12 @@ namespace MinecraftClientGUI
         private void PaintTopBorder(object sender, PaintEventArgs e) { var c = (Control)sender; e.Graphics.DrawLine(new Pen(Theme.Border), 0, 0, c.Width, 0); }
         private void PaintLeftBorder(object sender, PaintEventArgs e) { var c = (Control)sender; e.Graphics.DrawLine(new Pen(Theme.Border), 0, 0, 0, c.Height); }
         private Label MkLabel(string text, int x, int y) => new Label { Text = text, Location = new Point(x, y), AutoSize = true, ForeColor = Theme.TextDim, Font = new Font("Segoe UI", 8f) };
+
+        private string GenerateRandomString(int length)
+        {
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            return new string(Enumerable.Repeat(chars, length).Select(s => s[rnd.Next(s.Length)]).ToArray());
+        }
     }
 
     // =====================================================
